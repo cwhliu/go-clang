@@ -9,7 +9,11 @@
 extern "C" {
 #endif
 
+// String representation of operators (unary, binary)
 CXString clang_ext_getOperatorSpelling(CXCursor cursor);
+
+// String representation of literals (integer, floating)
+CXString clang_ext_getLiteralSpelling(CXCursor cursor);
 
 #ifdef __cplusplus
 }

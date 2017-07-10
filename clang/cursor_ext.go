@@ -9,3 +9,10 @@ func (c Cursor) OperatorSpelling() string {
 
 	return o.String()
 }
+
+func (c Cursor) LiteralSpelling() string {
+	o := cxstring{C.clang_ext_getLiteralSpelling(c.c)}
+	defer o.Dispose()
+
+	return o.String()
+}
