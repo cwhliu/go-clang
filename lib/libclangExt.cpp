@@ -82,9 +82,14 @@ CXString clang_ext_getLiteralSpelling(CXCursor cursor)
   // Floating literal
   if (cursor.kind == CXCursor_FloatingLiteral) {
     clang::FloatingLiteral *lit = (clang::FloatingLiteral *) clang::getCursorExpr(cursor);
-    llvm::SmallString<64> str;
-    lit->getValue().toString(str);
-    return clang::cxstring::createDup(str.c_str());
+
+    // Return accurate floating point value
+    //llvm::SmallString<64> str;
+    //lit->getValue().toString(str);
+    //return clang::cxstring::createDup(str.c_str());
+
+    // Return approximate floating point value
+    return clang::cxstring::createDup(std::to_string(lit->getValueAsApproximateDouble()));
   }
 }
 
