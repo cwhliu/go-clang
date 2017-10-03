@@ -1,6 +1,6 @@
 
 all:
-	g++ -I`llvm-config --includedir` -c libclangExt.cpp
+	g++ -std=c++11 -I`llvm-config --includedir` -c libclangExt.cpp
 	ar rvs libclangExt.a libclangExt.o
 
 clean:
